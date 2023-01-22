@@ -110,7 +110,6 @@ def register_teacher(request):
             messages.error(request, "Invalid Credentials. Register again with correct credentials.")
             msg = 'Form is not valid'
     else:
-        messages.error(request, "Invalid Credentials. Register again with correct credentials.")
         form = SignUpForm_teacher()
 
     return render(request, "accounts/register_teacher.html", {"form": form, "msg": msg, "success": success})
