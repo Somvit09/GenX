@@ -4,6 +4,9 @@ from .forms import LoginForm, SignUpForm_Student, SignUpForm_teacher
 from django.contrib.auth.decorators import login_required
 from .models import RegisterTeacher, RegisterStudent
 from django.contrib import messages
+from .forms import AadhaarForm
+from .models import Aadhaar
+from django.http import JsonResponse
 
 
 def login_view(request):  # login view
@@ -160,3 +163,23 @@ def logout(request):
     auth_logout(request)  # logout
     messages.success(request, "user logged out successfully.")
     return redirect('login')
+
+@login_required(login_url='/login/')
+def adharCardView(request):
+    student_object = RegisterStudent.objects.filter(username=request.user).exists()
+    teacher_object = RegisterTeacher.objects.filter(username=request.user).exists()
+    form = AadhaarForm()
+    if student_object or teacher_object:
+        if request.method == 'POST':
+            form = AadhaarForm(request.POST, request.FILES)
+            if form.is_valid():
+                aadhaar_number = form.cleaned_data['aadhaar_number']
+                aadhaar_file = form.cleaned_data['aadhaar_file']
+                aadhaar = Aadhaar(aadhaar_number=aadhaar_number, aadhaar_file=aadhaar_file)
+                aadhaar.save()
+                form.save()
+                return redirect('index')
+            else:
+                form = AadhaarForm()
+
+    return render(request, 'accounts/aadhaar_upload.html', context={'formData': form})

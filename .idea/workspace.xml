@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e440c16-142b-411d-93a4-aa1302f34542" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Photos/Screenshot (40).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Photos/Screenshot (41).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Photos/Screenshot (42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Photos/Screenshot (43).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Photos/Screenshot (44).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Photos/Screenshot (45).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Photos/Screenshot (46).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +42,13 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\Internships\GenX\Problem" />
       <recent name="I:\Internships\GenX\Problem\templates_1\includes" />
     </key>
   </component>

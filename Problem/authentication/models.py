@@ -51,3 +51,9 @@ class RegisterStudent(AbstractBaseUser):  # BaseUserManager for creating object 
 
     def __str__(self):
         return self.username
+
+
+
+class Aadhaar(models.Model):
+    aadhaar_number = models.CharField(max_length=12)
+    aadhaar_file = models.FileField(upload_to='aadhaar/')

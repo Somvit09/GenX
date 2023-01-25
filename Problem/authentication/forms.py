@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Aadhaar
 
 
 class LoginForm(forms.Form):
@@ -179,3 +180,20 @@ class SignUpForm_teacher(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+
+class AadhaarForm(forms.Form):
+    aadhaar_number = forms.CharField(max_length=12,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Adhar Number",
+                "class": "form-control",
+            }
+        ))
+    aadhaar_file = forms.FileField(
+        widget=forms.FileInput(
+            attrs={
+                "placeholder": "Upload Your Adhar Card",
+                "class": "form-control",
+            }
+        ))

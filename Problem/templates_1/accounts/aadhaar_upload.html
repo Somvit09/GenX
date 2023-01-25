@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+      <div class="content">
+
+
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="card">
+
+            <form method="post" enctype="multipart/form-data" action="{% url 'adhar card' %}">
+              {% include 'includes/messages.html' %}
+                <div class="form-group mb-3">
+
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    {% csrf_token %}
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                        </div>
+                        {{ formData.aadhaar_number }}
+                    </div>
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                        </div>
+                        {{ formData.aadhaar_file }}
+                      </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="Submit">
+                </div>
+              </form>
+
+            </div>
+          </div>
+      </div>
+
+
+
+
+      </div>
+
+
+{% endblock %}
