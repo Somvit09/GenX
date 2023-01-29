@@ -220,17 +220,19 @@ def adharCardView(request):
 def details(request):
     form = DetailForm()
     if request.user.is_authenticated:
-        if request.method == 'POST':
+        if request.method == "POST":
             form = DetailForm(request.POST, request.FILES)
             if form.is_valid():
                 company_name = form.cleaned_data['company_name']
                 joining_date = form.cleaned_data['joining_date']
                 last_working_date = form.cleaned_data['last_working_date']
                 upload_document = form.cleaned_data['upload_document']
+                print(company_name, joining_date, last_working_date, upload_document)
                 details = Details.objects.create(company_name=company_name, joining_date=joining_date, last_working_date=last_working_date, upload_document=upload_document)
                 details.save()
+                form.save()
                 messages.success(request, 'Successfully added details.')
                 return redirect('home')
             else:
                 form = DetailForm()
-    return render(request, 'accounts/details.html', context={'form': form})
+    return render(request, 'accounts/details.html', context={'formd': form})

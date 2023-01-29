@@ -19,7 +19,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    {{ form.company_name }}
+                    {{ formd.company_name }}
                   </div>
                 </div>
                 <div class="form-group">
@@ -27,15 +27,15 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    {{ form.joining_date }}
+                    {{ formd.joining_date }}
                   </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                        <span class="input-group-text" placeholder="Enter last working date"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      {{ form.last_working_date }}
+                      {{ formd.last_working_date }}
                     </div>
                   </div>
                   <div class="form-group">
@@ -43,11 +43,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open">Click Here to Upload Document</i></span>
                       </div>
-                      {{ form.upload_document }}
+                      {{ formd.upload_document }}
                     </div>
                   </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Upload</button>
+                  <!-- <button type="submit" class="btn btn-primary my-4">Upload</button> -->
+                  <input type="submit" class="btn btn-primary my-4" value="Upload">
                 </div>
               </form>
 
