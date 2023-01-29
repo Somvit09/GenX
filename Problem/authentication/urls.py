@@ -10,5 +10,6 @@ urlpatterns = [
     path('register_teacher/', register_teacher, name="register_teacher"),
     path("logout/", views.logout, name="logout"),
     path("profile/", views.profile, name="profile"),
+    path("details/", views.details, name="details"),
     path("adharCard/", views.adharCardView, name="adhar card"),
 ]

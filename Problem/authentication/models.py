@@ -27,6 +27,8 @@ class RegisterTeacher(AbstractBaseUser):
     contact_number = models.CharField(max_length=250)
     teacher_id = models.CharField(max_length=250)
     is_teacher = models.BooleanField(default=True)
+    # teacher_adhar_card = models.CharField(max_length=12, blank=True)
+    # teacher_aadhaar_file = models.FileField(upload_to='teacher/aadhaar/', blank=True)
 
     objects = MyAccountManager()
 
@@ -46,6 +48,8 @@ class RegisterStudent(AbstractBaseUser):  # BaseUserManager for creating object 
     roll_no = models.CharField(max_length=250)
     student_id = models.CharField(max_length=250)
     is_student = models.BooleanField(default=True)
+    # student_adhar_card = models.CharField(max_length=12, blank=True)
+    # student_aadhaar_file = models.FileField(upload_to='student/aadhaar/', blank=True)
 
     objects = MyAccountManager()
 
@@ -53,7 +57,19 @@ class RegisterStudent(AbstractBaseUser):  # BaseUserManager for creating object 
         return self.username
 
 
-
 class Aadhaar(models.Model):
     aadhaar_number = models.CharField(max_length=12)
     aadhaar_file = models.FileField(upload_to='aadhaar/')
+
+
+    def __str__(self):
+        return self.aadhaar_number
+    
+class Details(models.Model):
+    company_name = models.CharField(max_length=250)
+    joining_date = models.DateField()
+    last_working_date = models.DateTimeField()
+    upload_document = models.FileField(upload_to='details/')
+
+    def __str__(self):
+        return self.company_name

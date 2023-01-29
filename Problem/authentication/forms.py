@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Aadhaar
+from .models import Aadhaar, Details
 
 
 class LoginForm(forms.Form):
@@ -186,7 +186,6 @@ class AadhaarForm(forms.Form):
     aadhaar_number = forms.CharField(max_length=12,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Adhar Number",
                 "class": "form-control",
             }
         ))
@@ -195,5 +194,37 @@ class AadhaarForm(forms.Form):
             attrs={
                 "placeholder": "Upload Your Adhar Card",
                 "class": "form-control",
+                'text-align': 'center',
+            }
+        ))
+
+class DetailForm(forms.Form):
+    company_name = forms.CharField(max_length=250,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                'placeholder': 'Enter Company Name',
+            }
+        ))
+    joining_date = forms.DateField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                'placeholder': 'Enter Joining Date',
+            }
+        ))
+    last_working_date = forms.DateField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                'placeholder': 'Enter Last Woring Date',
+            }
+        ))
+    upload_document = forms.FileField(
+        widget=forms.FileInput(
+            attrs={
+                "placeholder": "Upload Your Document",
+                "class": "form-control",
+                'text-align': 'center',
             }
         ))
