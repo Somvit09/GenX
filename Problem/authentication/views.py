@@ -252,6 +252,7 @@ def details(request):
     #         else:
     #             form = AadhaarForm()
     if request.user.is_authenticated:
+        print(request.user.id)
         if request.method == "POST":
             form = DetailForm(request.POST, request.FILES)
             if form.is_valid():
@@ -267,3 +268,25 @@ def details(request):
                 form = DetailForm()
 
     return render(request, 'accounts/details.html', context={'formd': form})
+
+@login_required(login_url='/login/')
+def edit(request):
+    form = DetailForm()
+    if request.user.is_authenticated:
+        user = request.user.id
+        details = Details.objects.get(id=user)
+        if request.method == 'POST':
+            form = DetailForm(request.POST, request.FILES)
+            if form.is_valid():
+                details.company_name = form.cleaned_data['company_name']
+                details.joining_date = form.cleaned_data['joining_date']
+                details.upload_document = form.cleaned_data['upload_document']
+                details.last_working_date = form.cleaned_data['last_working_date']
+                details.save()
+                messages.success(request, "Successfully edited Details.")
+                return redirect('home')
+            else:
+                form = DetailForm()
+    return render(request, 'accounts/edit.html', context={'formd': form})
+
+        

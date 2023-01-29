@@ -187,6 +187,7 @@ class AadhaarForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
+                "placeholder": "Enter Your Adhar number",
             }
         ))
     aadhaar_file = forms.FileField(
@@ -210,14 +211,14 @@ class DetailForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
-                'placeholder': 'Enter Joining Date',
+                'placeholder': 'Enter Joining Date in (year-month-date) format',
             }
         ))
     last_working_date = forms.DateField(
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
-                'placeholder': 'Enter Last Woring Date',
+                'placeholder': 'Enter Last Woring Date (year-month-date) format',
             }
         ))
     upload_document = forms.FileField(

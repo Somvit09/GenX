@@ -33,7 +33,7 @@
                   </div>
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-hat-">Click to upload your Adhar Card</i></span>
+                      <span class="input-group-text"><i class="ni ni-hat-">Click to upload your Employment Details</i></span>
                     </div>
                     {{ formd.upload_document }}
                 </div>
@@ -42,7 +42,9 @@
                 <div class="text-center">
                     <input type="submit" class="btn btn-primary my-4" value="Upload">
                 </div>
+                
               </form>
+              <a href="{% url 'edit' %}"><input type="submit" class="btn btn-primary my-4" value="Edit"></a>
             </div>
            </div>
         </div>
