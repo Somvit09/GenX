@@ -219,20 +219,51 @@ def adharCardView(request):
 @login_required(login_url='/login/')
 def details(request):
     form = DetailForm()
+    student_object = RegisterStudent.objects.filter(username=request.user).exists()
+    teacher_object = RegisterTeacher.objects.filter(username=request.user).exists()
+    # if student_object:
+    #     if request.method == 'POST':
+    #         form = AadhaarForm(request.POST, request.FILES)
+    #         if form.is_valid():
+    #             aadhaar_number = form.cleaned_data['aadhaar_number']
+    #             aadhaar_file = form.cleaned_data['aadhaar_file']
+    #             aadhaar = Aadhaar(aadhaar_number=aadhaar_number, aadhaar_file=aadhaar_file)
+    #             form.save()
+    #             # student = RegisterStudent(student_adhar_number=aadhaar_number, student_adhar_file=aadhaar_file)
+    #             # student.save()
+    #             aadhaar.save()
+    #             messages.success(request, "Successfully added Adhar Card.")
+    #             return render(request, 'home/index.html')
+    #         else:
+    #             form = AadhaarForm()
+    # if teacher_object:
+    #     if request.method == 'POST':
+    #         form = AadhaarForm(request.POST, request.FILES)
+    #         if form.is_valid():
+    #             aadhaar_number = form.cleaned_data['aadhaar_number']
+    #             aadhaar_file = form.cleaned_data['aadhaar_file']
+    #             aadhaar = Aadhaar(aadhaar_number=aadhaar_number, aadhaar_file=aadhaar_file)
+    #             form.save()
+    #             # teacher = RegisterTeacher(teacher_adhar_number=aadhaar_number, teacher_adhar_file=aadhaar_file)
+    #             # teacher.save()
+    #             aadhaar.save()
+    #             messages.success(request, "Successfully added Adhar Card.")
+    #             return render(request, 'home/index.html')
+    #         else:
+    #             form = AadhaarForm()
     if request.user.is_authenticated:
         if request.method == "POST":
             form = DetailForm(request.POST, request.FILES)
             if form.is_valid():
                 company_name = form.cleaned_data['company_name']
                 joining_date = form.cleaned_data['joining_date']
-                last_working_date = form.cleaned_data['last_working_date']
                 upload_document = form.cleaned_data['upload_document']
-                print(company_name, joining_date, last_working_date, upload_document)
-                details = Details.objects.create(company_name=company_name, joining_date=joining_date, last_working_date=last_working_date, upload_document=upload_document)
+                last_working_date = form.cleaned_data['last_working_date']
+                details = Details(company_name=company_name, joining_date=joining_date, last_working_date=last_working_date, upload_document=upload_document)
                 details.save()
-                form.save()
-                messages.success(request, 'Successfully added details.')
+                messages.success(request, "Successfully added Details.")
                 return redirect('home')
             else:
                 form = DetailForm()
+
     return render(request, 'accounts/details.html', context={'formd': form})
