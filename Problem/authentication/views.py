@@ -278,15 +278,32 @@ def edit(request):
         if request.method == 'POST':
             form = DetailForm(request.POST, request.FILES)
             if form.is_valid():
-                details.company_name = form.cleaned_data['company_name']
-                details.joining_date = form.cleaned_data['joining_date']
-                details.upload_document = form.cleaned_data['upload_document']
-                details.last_working_date = form.cleaned_data['last_working_date']
-                details.save()
+                company_name = details.company_name
+                joining_date = details.joining_date
+                upload_document = details.upload_document
+                last_working_date = details.last_working_date
+                details.save(company_name=company_name, joining_date=joining_date, upload_document=upload_document, last_working_date=last_working_date)
                 messages.success(request, "Successfully edited Details.")
                 return redirect('home')
             else:
                 form = DetailForm()
     return render(request, 'accounts/edit.html', context={'formd': form})
+
+@login_required(login_url='/login/')
+def all_details(request):
+    details = Details.objects.all()
+    data = {}
+    all_companies = []
+    all_joining_dates = []
+    last_joining_dates = []
+    uploaded_documnets = []
+    for i in details:
+        all_companies.append(i.company_name)
+        all_joining_dates.append(i.joining_date)
+        last_joining_dates.append(i.last_working_date)
+        uploaded_documnets.append(i.upload_document)
+    data = list(zip(all_companies, all_joining_dates, last_joining_dates, uploaded_documnets))
+    return render(request, 'accounts/all_details.html', {'data': data})
+
 
         
