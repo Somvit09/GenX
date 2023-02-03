@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Aadhaar, Details
+from .models import Aadhaar, Details, TimeSheet
 
 
 class LoginForm(forms.Form):
@@ -228,4 +228,27 @@ class DetailForm(forms.Form):
                 "class": "form-control",
                 'text-align': 'center',
             }
+        ))
+
+class TimeSheetForm(forms.Form):
+    date = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    'placeholder': 'Enter Date in YYYY-MM-DD format',
+                }
+        ))
+    start_time = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    'placeholder': 'Enter Start Time in HH:MM format',
+                }
+        ))
+    end_time = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    'placeholder': 'Enter End Time in HH:MM format',
+                }
         ))

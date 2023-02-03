@@ -73,3 +73,13 @@ class Details(models.Model):
 
     def __str__(self):
         return self.company_name
+
+
+class TimeSheet(models.Model):
+    date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    employee = models.TextField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.employee

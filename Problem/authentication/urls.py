@@ -14,4 +14,5 @@ urlpatterns = [
     path("edit/", views.edit, name="edit"),
     path("details/", views.details, name="details"),
     path("adharCard/", views.adharCardView, name="adhar card"),
+    path('submit_timesheet/', views.submit_timesheet, name='submit_timesheet'),
 ]

@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+      <div class="content">
+
+
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="card">
+
+            <form method="post" enctype="multipart/form-data">
+              {% include 'includes/messages.html' %}
+                <div class="form-group mb-3">
+                    {% csrf_token %}
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                        </div>
+                        {{ form.as_p }}
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary my-4" value="Submit">
+                </div>
+              </form>
+            </div>
+           </div>
+        </div>
+      </div>
+
+{% endblock %}

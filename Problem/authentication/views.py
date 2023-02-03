@@ -4,8 +4,8 @@ from .forms import LoginForm, SignUpForm_Student, SignUpForm_teacher
 from django.contrib.auth.decorators import login_required
 from .models import RegisterTeacher, RegisterStudent, Details
 from django.contrib import messages
-from .forms import AadhaarForm, DetailForm
-from .models import Aadhaar
+from .forms import AadhaarForm, DetailForm, TimeSheetForm
+from .models import Aadhaar,TimeSheet
 from django.http import JsonResponse
 
 #  icons-argon - https://demos.creative-tim.com/black-dashboard/examples/icons.html
@@ -306,4 +306,22 @@ def all_details(request):
     return render(request, 'accounts/all_details.html', {'data': data})
 
 
-        
+@login_required
+def submit_timesheet(request):
+    if request.user.is_authenticated:
+        form = TimeSheetForm()
+        if request.method == 'POST':
+            form = TimeSheetForm(request.POST)
+            if form.is_valid():
+                date = form.cleaned_data['date']
+                start_time = form.cleaned_data['start_time']
+                end_time = form.cleaned_data['end_time']
+                employee = str(request.user._wrapped)
+                timesheet = TimeSheet(date=date, start_time=start_time, end_time=end_time, employee=employee)
+                timesheet.save()
+                print(type(timesheet.employee))
+                messages.success(request, 'Successfully submitted the timesheet.')
+                return redirect('home')
+        else:
+            form = TimeSheetForm()
+        return render(request, 'accounts/timesheet_form.html', {'form': form})
